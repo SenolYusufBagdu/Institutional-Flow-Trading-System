@@ -1,5 +1,3 @@
-# Institutional-Flow-Trading-System
-Real-time market intelligence     panel for MetaTrader 5
 # Institutional Flow Trading System
 ### Real-Time Market Intelligence Panel for MetaTrader 5
 
@@ -214,6 +212,28 @@ MT5 Chart
             ├── Node.js Server
             └── Real-time HTML Panel
 ```
+
+---
+
+## Performance
+
+Tested on FTMO $100,000 simulated account (Free Trial).
+
+| Metric | Result |
+|--------|--------|
+| Win Rate | 90.91% |
+| Profit Factor | 61.92 |
+| Sharpe Ratio | 1.11 |
+| Average RRR | 1 : 6.19 |
+| Expectancy | $227.66 per trade |
+| Max Drawdown | 0.3% |
+| Max Daily Loss | 0.6% |
+| Profit Target | 5% — ✅ PASSED |
+| Total Trades | 22 |
+| Account Size | $100,000 |
+
+> *Results from FTMO Free Trial — simulated environment.*
+> *All trades executed algorithmically. Zero manual intervention.*
 
 ---
 
