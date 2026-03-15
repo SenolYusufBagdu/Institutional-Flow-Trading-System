@@ -1,4 +1,5 @@
 # Institutional Flow Trading System
+
 ### Real-Time Market Intelligence Panel for MetaTrader 5
 
 ![Version](https://img.shields.io/badge/version-15.10-blue)
@@ -14,30 +15,34 @@
 
 Built entirely from scratch in MQL5. Zero auto-trading — pure analysis and decision support.
 
-> *"Analyze like an institution. Decide like a trader."*
+> _"Analyze like an institution. Decide like a trader."_
 
 ---
 
 ## Features
 
 ### Signal Intelligence Engine
+
 - Real-time signal generation based on EMA cross and RSI confirmation
 - Dynamic scoring system (0–100) across 7 weighted criteria
 - Quality classification: **A+ / A / B / REJECT**
 - Adaptive risk sizing per signal quality
 
 ### Multi-Timeframe Confluence (MTF)
+
 - Simultaneous analysis across **M5, M15, H1, H4**
 - Weighted confluence scoring (H4 × 3.0 → M5 × 0.5)
 - Strong / Aligned / Partial / Weak / Mixed classification
 
 ### Market Structure Detection
+
 - Break of Structure (**BOS**) detection
 - Change of Character (**CHoCH**) detection
 - Swing point labeling: HH, HL, LH, LL
 - Zero repaint — closed bar confirmation only
 
 ### Order Flow Analysis
+
 - Cumulative Volume Delta (**CVD**) tracking
 - Real tick-based delta classification (uptick/downtick)
 - CVD divergence detection (fake rallies / fake drops)
@@ -46,23 +51,27 @@ Built entirely from scratch in MQL5. Zero auto-trading — pure analysis and dec
 - Stacked imbalance detection
 
 ### Institutional Levels
+
 - Intraday **VWAP** with ±1 standard deviation bands
 - **Point of Control (POC)** — highest volume price level
 - Premium / Discount / Fair Value zone classification
 - Dealing Range (DR) bias
 
 ### Risk Management
+
 - Automatic lot size calculation
 - ATR-based SL/TP placement (SL × 1.0 / TP × 1.5)
 - Quality-adjusted risk: A+ = 1.25× / A = 1.00× / B = 0.65×
 - Real-time risk % and dollar exposure display
 
 ### VHOCH Confirmation System
+
 - **V**alidation of **H**igher **O**rder **C**onfluence **H**ypothesis
 - Confirms when Market Structure + Order Flow + MTF all agree
 - Strongest entry signal in the system
 
 ### Entry Checklist
+
 - 10-point pre-trade checklist
 - Automatic blocker detection
 - ALL CLEAR signal when all conditions met
@@ -104,32 +113,32 @@ Built entirely from scratch in MQL5. Zero auto-trading — pure analysis and dec
 
 Each signal is scored across 7 criteria:
 
-| Criteria | Max Points | Best Condition |
-|----------|-----------|----------------|
-| Session | 15 | London + NY overlap |
-| HTF H1 Bias | 12 | H1 aligned with signal |
-| HTF H4 Bias | 8 | H4 aligned with signal |
-| Price Zone | 15 | BUY in Discount / SELL in Premium |
-| Volatility | 10 | ATR ratio ≥ 1.0 |
-| RSI | 15 | Favorable RSI for signal direction |
-| EMA Spread | 15 | Wide EMA gap relative to ATR |
-| Regime | 10 | Trending market |
-| Structure Bonus | +10% | BOS/CHoCH confirms direction |
+| Criteria        | Max Points | Best Condition                     |
+| --------------- | ---------- | ---------------------------------- |
+| Session         | 15         | London + NY overlap                |
+| HTF H1 Bias     | 12         | H1 aligned with signal             |
+| HTF H4 Bias     | 8          | H4 aligned with signal             |
+| Price Zone      | 15         | BUY in Discount / SELL in Premium  |
+| Volatility      | 10         | ATR ratio ≥ 1.0                    |
+| RSI             | 15         | Favorable RSI for signal direction |
+| EMA Spread      | 15         | Wide EMA gap relative to ATR       |
+| Regime          | 10         | Trending market                    |
+| Structure Bonus | +10%       | BOS/CHoCH confirms direction       |
 
 ### Quality Classes
 
-| Class | Score | Risk Multiplier |
-|-------|-------|----------------|
-| A+ | ≥ 80 | 1.25× base risk |
-| A | ≥ 65 | 1.00× base risk |
-| B | ≥ 50 | 0.65× base risk |
-| REJECT | < 50 | Do not trade |
+| Class  | Score | Risk Multiplier |
+| ------ | ----- | --------------- |
+| A+     | ≥ 80  | 1.25× base risk |
+| A      | ≥ 65  | 1.00× base risk |
+| B      | ≥ 50  | 0.65× base risk |
+| REJECT | < 50  | Do not trade    |
 
 ### VHOCH Logic
 
 ```
 IF Market Structure bias == signal direction
-AND Order Flow bias == signal direction  
+AND Order Flow bias == signal direction
 AND MTF Confluence >= 2/4
 → VHOCH CONFIRMED ✅
 
@@ -142,6 +151,7 @@ ELSE
 ## Installation
 
 1. Copy `Institutional_Flow_Trading_System.mq5` to:
+
    ```
    MT5 → MQL5 → Indicators
    ```
@@ -158,36 +168,36 @@ ELSE
 
 ## Configuration
 
-| Parameter | Default | Description |
-|-----------|---------|-------------|
-| `InpAccBal` | 10000 | Account balance for lot calculation |
-| `InpBaseRisk` | 1.0 | Base risk percentage |
-| `InpRiskAP` | 1.25 | A+ quality risk multiplier |
-| `InpRiskA` | 1.00 | A quality risk multiplier |
-| `InpRiskB` | 0.65 | B quality risk multiplier |
-| `InpScoreAP` | 80 | A+ score threshold |
-| `InpScoreA` | 65 | A score threshold |
-| `InpScoreB` | 50 | B score threshold |
-| `InpEMA_Fast` | 8 | Fast EMA period |
-| `InpEMA_Slow` | 21 | Slow EMA period |
-| `InpATR_Period` | 14 | ATR period |
-| `InpSL_ATR` | 1.0 | Stop loss ATR multiplier |
-| `InpTP_ATR` | 1.5 | Take profit ATR multiplier |
-| `InpHTF` | H1 | Primary higher timeframe |
-| `InpHTF2` | H4 | Secondary higher timeframe |
+| Parameter       | Default | Description                         |
+| --------------- | ------- | ----------------------------------- |
+| `InpAccBal`     | 10000   | Account balance for lot calculation |
+| `InpBaseRisk`   | 1.0     | Base risk percentage                |
+| `InpRiskAP`     | 1.25    | A+ quality risk multiplier          |
+| `InpRiskA`      | 1.00    | A quality risk multiplier           |
+| `InpRiskB`      | 0.65    | B quality risk multiplier           |
+| `InpScoreAP`    | 80      | A+ score threshold                  |
+| `InpScoreA`     | 65      | A score threshold                   |
+| `InpScoreB`     | 50      | B score threshold                   |
+| `InpEMA_Fast`   | 8       | Fast EMA period                     |
+| `InpEMA_Slow`   | 21      | Slow EMA period                     |
+| `InpATR_Period` | 14      | ATR period                          |
+| `InpSL_ATR`     | 1.0     | Stop loss ATR multiplier            |
+| `InpTP_ATR`     | 1.5     | Take profit ATR multiplier          |
+| `InpHTF`        | H1      | Primary higher timeframe            |
+| `InpHTF2`       | H4      | Secondary higher timeframe          |
 
 ---
 
 ## Technical Stack
 
-| Component | Technology |
-|-----------|-----------|
-| Core Engine | MQL5 |
-| Platform | MetaTrader 5 |
-| Dashboard Server | Node.js |
-| Web Dashboard | HTML / CSS / JavaScript |
-| Data Exchange | MT5 Global Variables |
-| Indicators | EMA, RSI, ATR (manual calculation, zero lag) |
+| Component        | Technology                                   |
+| ---------------- | -------------------------------------------- |
+| Core Engine      | MQL5                                         |
+| Platform         | MetaTrader 5                                 |
+| Dashboard Server | Node.js                                      |
+| Web Dashboard    | HTML / CSS / JavaScript                      |
+| Data Exchange    | MT5 Global Variables                         |
+| Indicators       | EMA, RSI, ATR (manual calculation, zero lag) |
 
 ---
 
@@ -219,27 +229,29 @@ MT5 Chart
 
 Tested on FTMO $100,000 simulated account (Free Trial).
 
-| Metric | Result |
-|--------|--------|
-| Win Rate | 90.91% |
-| Profit Factor | 61.92 |
-| Sharpe Ratio | 1.11 |
-| Average RRR | 1 : 6.19 |
-| Expectancy | $227.66 per trade |
-| Max Drawdown | 0.3% |
-| Max Daily Loss | 0.6% |
-| Profit Target | 5% — ✅ PASSED |
-| Total Trades | 22 |
-| Account Size | $100,000 |
+| Metric         | Result            |
+| -------------- | ----------------- |
+| Win Rate       | 90.91%            |
+| Profit Factor  | 61.92             |
+| Sharpe Ratio   | 1.11              |
+| Average RRR    | 1 : 6.19          |
+| Expectancy     | $227.66 per trade |
+| Max Drawdown   | 0.3%              |
+| Max Daily Loss | 0.6%              |
+| Profit Target  | 5% — ✅ PASSED    |
+| Total Trades   | 22                |
+| Account Size   | $100,000          |
 
-> *Results from FTMO Free Trial — simulated environment.*
-> *All trades executed algorithmically. Zero manual intervention.*
+![alt text](image.png)
+
+> _Results from FTMO Free Trial — simulated environment._
+> _All trades executed algorithmically. Zero manual intervention._
 
 ---
 
 ## Screenshots
 
-> *Add your screenshots here*
+> _Add your screenshots here_
 
 ---
 
