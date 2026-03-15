@@ -1,11 +1,4 @@
-//+------------------------------------------------------------------+
-//|              ICT_Signal_Intelligence_V15.mq5                      |
-//|              Copyright 2026, Gemini Trading                       |
-//|   V15: SIGNAL INTELLIGENCE — Full analysis, zero auto-trade      |
-//|   LEFT:  V13.8 EA status (reads GlobalVariables)                 |
-//|   RIGHT: V14 Signal Engine (standalone)                          |
-//|   Chart: OB/FVG/Sweep/DR drawing + EMA overlay                  |
-//+------------------------------------------------------------------+
+
 #property strict
 #property indicator_chart_window
 #property indicator_plots 4
@@ -16,7 +9,7 @@
 #property indicator_type1   DRAW_LINE
 #property indicator_color1  clrDodgerBlue
 #property indicator_width1  2
-#property indicator_label2  "EMA Slow"
+#property indicator_label2  "EMA SlowS
 #property indicator_type2   DRAW_LINE
 #property indicator_color2  clrOrangeRed
 #property indicator_width2  2
